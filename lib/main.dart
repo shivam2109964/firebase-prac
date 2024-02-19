@@ -18,12 +18,6 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     FirebaseFirestore firebase = FirebaseFirestore.instance;
-    //Add data
-    void addData() async {
-      await firebase.collection("List in Fire").add(
-            ({"Om": "Jai Shree Ram"}),
-          );
-    }
 
     //Add Data 2
     void addDataTwo() async {
@@ -36,7 +30,30 @@ class _MainAppState extends State<MainApp> {
       );
     }
 
-    print("Sucessfully Created");
+    //Update data in Firestore
+    void updateData() async {
+      //Create a document reference
+      DocumentReference documentReference =
+          firebase.collection("users").doc("user 1");
+      //Update the data on the document
+      await documentReference.update(
+        {
+          "age": 22,
+        },
+      );
+    }
+
+    //Delete the data 2 from firestore
+    void deleteData() async {
+      //Create a document reference
+      DocumentReference documentReference =
+          firebase.collection("users").doc("user 1");
+      //Delete the document
+      await documentReference.delete();
+    }
+
+    //Fetch data from Firestore and Display
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -47,18 +64,26 @@ class _MainAppState extends State<MainApp> {
               children: <Widget>[
                 ElevatedButton(
                   onPressed: () {
-                    addData();
-                  },
-                  child: const Text(
-                    "Add Data 1",
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
                     addDataTwo();
                   },
                   child: const Text(
                     "Add Data 2",
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    updateData();
+                  },
+                  child: const Text(
+                    "Update Data 2",
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    deleteData();
+                  },
+                  child: const Text(
+                    "Delete Data ss2",
                   ),
                 ),
               ],
