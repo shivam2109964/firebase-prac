@@ -1,0 +1,22 @@
+name: firebasee
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  cloud_firestore: ^4.15.5
+  firebase_core: ^2.25.4
+  firebase_ui_firestore: ^1.6.2
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
